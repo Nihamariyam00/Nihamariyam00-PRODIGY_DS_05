@@ -1,0 +1,47 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the dataset
+accident_data = pd.read_csv('traffic_accidents.csv')
+
+# Data preprocessing (cleaning and filtering)
+# For example, you may drop irrelevant columns or handle missing values
+
+# Exploratory Data Analysis (EDA)
+# Summary statistics
+print(accident_data.describe())
+
+# Visualizations
+# Accident count by road conditions
+plt.figure(figsize=(10, 6))
+sns.countplot(x='Road_Conditions', data=accident_data)
+plt.title('Accident Count by Road Conditions')
+plt.xlabel('Road Conditions')
+plt.ylabel('Accident Count')
+plt.xticks(rotation=45)
+plt.show()
+
+# Accident count by weather
+plt.figure(figsize=(10, 6))
+sns.countplot(x='Weather', data=accident_data)
+plt.title('Accident Count by Weather')
+plt.xlabel('Weather')
+plt.ylabel('Accident Count')
+plt.xticks(rotation=45)
+plt.show()
+
+# Accident count by time of day
+plt.figure(figsize=(10, 6))
+sns.countplot(x='Time_of_Day', data=accident_data)
+plt.title('Accident Count by Time of Day')
+plt.xlabel('Time of Day')
+plt.ylabel('Accident Count')
+plt.xticks(rotation=45)
+plt.show()
+
+# Heatmap for correlation between variables
+plt.figure(figsize=(10, 8))
+sns.heatmap(accident_data.corr(), annot=True, cmap='coolwarm')
+plt.title('Correlation Heatmap')
+plt.show()
